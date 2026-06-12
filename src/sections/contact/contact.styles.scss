@@ -1,0 +1,188 @@
+@import '../../styles/config';
+
+.contact-wrapper-block {
+  padding: $section-padding 0;
+  background-color: $surface;
+
+  &__container {
+    max-width: $container-max;
+    margin: 0 auto;
+    padding-left: $margin-mobile;
+    padding-right: $margin-mobile;
+
+    @media (min-width: 768px) {
+      padding-left: $gutter;
+      padding-right: $gutter;
+    }
+  }
+
+  &__bento-box {
+    background-color: $inverse-surface;
+    color: $inverse-on-surface;
+    border-radius: 3rem;
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 4rem;
+    position: relative;
+    overflow: hidden;
+
+    @media (min-width: 768px) {
+      padding: 5rem;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  &__ambient-decor {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 24rem;
+    height: 24rem;
+    background-color: rgba($primary, 0.1);
+    filter: blur(100px);
+    border-radius: 9999px;
+    transform: translateY(-50%) translateX(50%);
+  }
+
+  &__info-side {
+    position: relative;
+    z-index: 10;
+  }
+
+  &__heading {
+    font-family: 'Inter', sans-serif;
+    font-size: 48px;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+
+    &--highlight {
+      color: $primary-fixed-dim;
+    }
+  }
+
+  &__lead {
+    color: $outline-variant;
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    margin-bottom: 3rem;
+    max-width: 24rem;
+  }
+
+  &__channels {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  &__channel-item {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  &__icon-plate {
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 1rem;
+    background-color: rgba(255, 255, 255, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__icon {
+    color: $primary-fixed-dim;
+  }
+
+  &__label {
+    font-size: 0.875rem;
+    opacity: 0.5;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin: 0;
+  }
+
+  &__value {
+    font-size: 1.125rem;
+    font-weight: 700;
+    margin: 0;
+  }
+
+  &__form {
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 2rem;
+    border-radius: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    position: relative;
+    z-index: 10;
+    backdrop-filter: blur(4px);
+
+    @media (min-width: 768px) {
+      padding: 3rem;
+    }
+  }
+
+  &__form-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+
+    @media (min-width: 768px) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  &__form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  &__field-label {
+    font-size: 0.875rem;
+    opacity: 0.7;
+  }
+
+  &__input, &__textarea {
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    color: $on-primary;
+    padding: 0.5rem;
+    outline: none;
+    @include transition-standard;
+
+    &:focus {
+      border-color: $primary-fixed-dim;
+    }
+  }
+
+  &__textarea {
+    resize: none;
+  }
+
+  &__submit-btn {
+    width: 100%;
+    padding: 1rem 0;
+    background-color: $primary;
+    color: $on-primary;
+    border: none;
+    border-radius: 0.75rem;
+    font-weight: 700;
+    cursor: pointer;
+    @include transition-standard;
+
+    &:hover {
+      background-color: rgba($primary, 0.9);
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
+  }
+}

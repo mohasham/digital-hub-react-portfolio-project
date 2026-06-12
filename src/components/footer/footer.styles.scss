@@ -1,0 +1,72 @@
+@import '../../styles/config';
+
+.app-footer {
+  width: 100%;
+  padding: $stack-lg 0;
+  background-color: $surface;
+  border-top: 1px solid rgba($outline-variant, 0.3);
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: $container-max;
+    margin: 0 auto;
+    padding-left: $margin-mobile;
+    padding-right: $margin-mobile;
+
+    @media (min-width: 768px) {
+      flex-direction: row;
+      justify-content: space-between;
+      padding-left: $gutter;
+      padding-right: $gutter;
+    }
+  }
+
+  &__branding {
+    text-align: center;
+    margin-bottom: 1.5rem;
+
+    @media (min-width: 768px) {
+      text-align: left;
+      margin-bottom: 0;
+    }
+  }
+
+  &__title {
+    font-family: 'Inter', sans-serif;
+    font-size: 32px;
+    font-weight: 600;
+    color: $on-surface;
+    margin-bottom: 0.5rem;
+  }
+
+  &__copyright {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: $on-secondary-fixed-variant;
+    letter-spacing: 0.05em;
+  }
+
+  &__socials {
+    display: flex;
+    gap: 2rem;
+  }
+
+  &__link {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: $on-secondary-fixed-variant;
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    @include transition-standard;
+
+    &:hover {
+      color: $primary;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+  }
+}

@@ -1,0 +1,150 @@
+@import '../../styles/config';
+
+.hire-me-pitch {
+  padding: $section-padding 0;
+  background-color: $surface-container-low;
+  overflow: hidden;
+
+  &__container {
+    max-width: $container-max;
+    margin: 0 auto;
+    padding-left: $margin-mobile;
+    padding-right: $margin-mobile;
+
+    @media (min-width: 768px) {
+      padding-left: $gutter;
+      padding-right: $gutter;
+    }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $stack-lg;
+    align-items: center;
+
+    @media (min-width: 768px) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  &__title {
+    font-family: 'Inter', sans-serif;
+    font-size: 48px;
+    font-weight: 600;
+    color: $on-surface;
+    margin-bottom: 2rem;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  &__item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  &__icon-badge {
+    margin-top: 0.25rem;
+    flex-shrink: 0;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 9999px;
+    background-color: rgba($primary, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__check {
+    color: $primary;
+    font-size: 0.875rem;
+  }
+
+  &__item-heading {
+    font-weight: 700;
+    color: $on-surface;
+  }
+
+  &__item-desc {
+    color: $secondary;
+  }
+
+  &__testimonial-container {
+    position: relative;
+  }
+
+  &__card {
+    background-color: $surface-container-lowest;
+    padding: 3rem;
+    border-radius: 2.5rem;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    position: relative;
+    z-index: 10;
+  }
+
+  &__quote-mark {
+    color: $primary-fixed-dim;
+    font-size: 3.75rem;
+    position: absolute;
+    top: -1rem;
+    left: -1rem;
+  }
+
+  &__quote {
+    font-family: 'Inter', sans-serif;
+    font-size: 28px;
+    color: $on-surface;
+    font-style: italic;
+    line-height: 1.2;
+
+    &--highlight {
+      color: $primary;
+    }
+  }
+
+  &__author-box {
+    margin-top: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  &__avatar {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 9999px;
+    background-color: $primary-container;
+  }
+
+  &__author-name {
+    font-weight: 700;
+    color: $on-surface;
+    margin: 0;
+  }
+
+  &__author-role {
+    color: $secondary;
+    font-size: 0.875rem;
+    margin: 0;
+  }
+
+  &__blur-decor {
+    position: absolute;
+    bottom: -2.5rem;
+    right: -2.5rem;
+    width: 16rem;
+    height: 16rem;
+    background-color: rgba($primary, 0.05);
+    filter: blur(64px);
+    border-radius: 9999px;
+  }
+}

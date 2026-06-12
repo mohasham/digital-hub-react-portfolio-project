@@ -1,0 +1,125 @@
+@import '../../styles/config';
+
+.about-bento-section {
+  padding: $section-padding 0;
+  background-color: $surface;
+
+  &__container {
+    max-width: $container-max;
+    margin: 0 auto;
+    padding-left: $margin-mobile;
+    padding-right: $margin-mobile;
+
+    @media (min-width: 768px) {
+      padding-left: $gutter;
+      padding-right: $gutter;
+    }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+
+    @media (min-width: 768px) {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  &__card {
+    border-radius: 1.875rem;
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    @include transition-standard;
+
+    &--featured {
+      @media (min-width: 768px) {
+        grid-column: span 2 / span 2;
+      }
+      background-color: $primary-container;
+      color: $on-primary;
+      position: relative;
+      overflow: hidden;
+      justify-content: flex-end;
+
+      &:hover {
+        .about-bento-section__icon {
+          transform: scale(1.1);
+        }
+      }
+    }
+
+    &--standard {
+      background-color: $surface-container-highest;
+      justify-content: space-between;
+      border: 1px solid rgba($outline-variant, 0.2);
+    }
+
+    &--surface {
+      background-color: $surface-container;
+      border: 1px solid rgba($outline-variant, 0.2);
+    }
+
+    &--tertiary {
+      background-color: $tertiary-container;
+      color: $on-tertiary-container;
+      border: 1px solid rgba($outline-variant, 0.2);
+    }
+
+    &--high {
+      background-color: $surface-container-high;
+      border: 1px solid rgba($outline-variant, 0.2);
+    }
+  }
+
+  &__icon-wrapper {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 2rem;
+    opacity: 0.2;
+  }
+
+  &__icon {
+    font-size: 8rem;
+    font-variation-settings: 'FILL' 1;
+    transition: transform 0.5s ease;
+  }
+
+  &__status-icon {
+    font-size: 2.25rem;
+    color: $primary;
+    margin-bottom: 2rem;
+  }
+
+  &__card-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 32px;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+
+  &__card-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    opacity: 0.9;
+    max-width: 28rem;
+  }
+
+  &__small-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 32px;
+    font-weight: 600;
+    color: $on-surface;
+    margin-bottom: 0.5rem;
+  }
+
+  &__muted-text {
+    color: $secondary;
+  }
+
+  &__text-opaque {
+    opacity: 0.9;
+  }
+}
