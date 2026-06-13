@@ -10,7 +10,7 @@
     padding-left: $margin-mobile;
     padding-right: $margin-mobile;
 
-    @media (min-width: 768px) {
+    @media (min-width: $bp-md) {
       padding-left: $gutter;
       padding-right: $gutter;
     }
@@ -21,7 +21,7 @@
     grid-template-columns: 1fr;
     gap: 1.5rem;
 
-    @media (min-width: 768px) {
+    @media (min-width: $bp-md) {
       grid-template-columns: repeat(3, minmax(0, 1fr));
     }
   }
@@ -34,7 +34,7 @@
     @include transition-standard;
 
     &--featured {
-      @media (min-width: 768px) {
+      @media (min-width: $bp-md) {
         grid-column: span 2 / span 2;
       }
       background-color: $primary-container;
@@ -98,6 +98,10 @@
     font-size: 32px;
     font-weight: 600;
     margin-bottom: 1rem;
+
+    @media (max-width: $bp-sm) {
+    font-size: 22px;
+  }
   }
 
   &__card-text {
@@ -113,6 +117,10 @@
     font-weight: 600;
     color: $on-surface;
     margin-bottom: 0.5rem;
+
+     @media (max-width: $bp-sm) {
+    font-size: 22px;
+  }
   }
 
   &__muted-text {

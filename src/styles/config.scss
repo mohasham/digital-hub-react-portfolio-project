@@ -57,6 +57,13 @@ $stack-sm: 12px;
 $section-padding: 96px;
 $stack-lg: 48px;
 
+// Breakpoints
+$bp-xs: 320px;
+$bp-sm: 480px;
+$bp-md: 768px;
+$bp-lg: 1024px;
+$bp-xl: 1200px;
+
 // Mixins
 @mixin flex-between {
   display: flex;

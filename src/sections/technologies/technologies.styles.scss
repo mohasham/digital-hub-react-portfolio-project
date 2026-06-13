@@ -11,7 +11,7 @@
     padding-left: $margin-mobile;
     padding-right: $margin-mobile;
 
-    @media (min-width: 768px) {
+    @media (min-width: $bp-md) {
       padding-left: $gutter;
       padding-right: $gutter;
     }
@@ -43,7 +43,7 @@
     grid-template-columns: 1fr;
     gap: $gutter;
 
-    @media (min-width: 768px) {
+    @media (min-width: $bp-md) {
       grid-template-columns: repeat(3, minmax(0, 1fr));
     }
   }
@@ -82,6 +82,15 @@
     font-weight: 600;
     color: $on-surface;
     margin-bottom: 1.5rem;
+
+    @media (max-width: $bp-sm) {
+    font-size: 22px;
+  }
+
+   @media (max-width: $bp-xs) {
+    font-size: 18px;
+  }
+
   }
 
   &__list {

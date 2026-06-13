@@ -5,7 +5,7 @@
   padding-left: $margin-mobile;
   padding-right: $margin-mobile;
 
-  @media (min-width: 768px) {
+  @media (min-width: $bp-md) {
     padding-left: $gutter;
     padding-right: $gutter;
   }
@@ -28,6 +28,14 @@
     font-weight: 600;
     color: $on-surface;
     letter-spacing: 0.02em;
+
+      @media (max-width: $bp-sm) {
+    font-size: 32px;
+  }
+
+  @media (max-width: $bp-xs) {
+    font-size: 26px;
+  }
   }
 
   &__subtitle {
@@ -38,7 +46,7 @@
   &__action-link {
     display: none;
     
-    @media (min-width: 768px) {
+    @media (min-width: $bp-md) {
       display: flex;
       align-items: center;
       gap: 0.5rem;
@@ -57,7 +65,7 @@
     grid-template-columns: 1fr;
     gap: $stack-lg;
 
-    @media (min-width: 768px) {
+    @media (min-width: $bp-md) {
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
   }

@@ -15,7 +15,7 @@
     padding-left: $margin-mobile;
     padding-right: $margin-mobile;
 
-    @media (min-width: 768px) {
+    @media (min-width: $bp-md) {
       flex-direction: row;
       justify-content: space-between;
       padding-left: $gutter;
@@ -27,7 +27,7 @@
     text-align: center;
     margin-bottom: 1.5rem;
 
-    @media (min-width: 768px) {
+    @media (min-width: $bp-md) {
       text-align: left;
       margin-bottom: 0;
     }
@@ -39,6 +39,10 @@
     font-weight: 600;
     color: $on-surface;
     margin-bottom: 0.5rem;
+
+    @media (max-width: $bp-sm) {
+    font-size: 22px;
+  }
   }
 
   &__copyright {

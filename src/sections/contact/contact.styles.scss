@@ -10,7 +10,7 @@
     padding-left: $margin-mobile;
     padding-right: $margin-mobile;
 
-    @media (min-width: 768px) {
+    @media (min-width: $bp-md) {
       padding-left: $gutter;
       padding-right: $gutter;
     }
@@ -27,7 +27,7 @@
     position: relative;
     overflow: hidden;
 
-    @media (min-width: 768px) {
+    @media (min-width: $bp-md) {
       padding: 5rem;
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
@@ -56,6 +56,14 @@
     font-weight: 600;
     margin-bottom: 1.5rem;
 
+      @media (max-width: $bp-sm) {
+    font-size: 28px;
+  }
+
+  @media (max-width: $bp-xs) {
+    font-size: 22px;
+  }
+
     &--highlight {
       color: $primary-fixed-dim;
     }
@@ -67,6 +75,10 @@
     font-size: 18px;
     margin-bottom: 3rem;
     max-width: 24rem;
+    
+    @media (max-width: $bp-xs) {
+    font-size: 15px;
+  }
   }
 
   &__channels {
@@ -121,7 +133,7 @@
     z-index: 10;
     backdrop-filter: blur(4px);
 
-    @media (min-width: 768px) {
+    @media (min-width: $bp-md) {
       padding: 3rem;
     }
   }
@@ -131,7 +143,7 @@
     grid-template-columns: 1fr;
     gap: 1.5rem;
 
-    @media (min-width: 768px) {
+    @media (min-width: $bp-md) {
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
   }
