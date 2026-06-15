@@ -48,7 +48,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <p className="contact-wrapper-block__label">Location</p>
-                  <p className="contact-wrapper-block__value" data-location="Saida, Lebanon">Saida, Lebanon</p>
+                  <p className="contact-wrapper-block__value" data-location="Saida, Lebanon">Saida, Lebanongit </p>
                 </div>
               </div>
 
