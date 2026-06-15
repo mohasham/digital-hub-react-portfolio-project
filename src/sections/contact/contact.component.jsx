@@ -28,7 +28,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <p className="contact-wrapper-block__label">Email me</p>
-                  <p className="contact-wrapper-block__value">hello@mshamma.dev</p>
+                  <p className="contact-wrapper-block__value">mohammadshamma298@gmail.com</p>
                 </div>
               </div>
 
@@ -38,7 +38,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <p className="contact-wrapper-block__label">Call me</p>
-                  <p className="contact-wrapper-block__value">+1 (555) 0123 4567</p>
+                  <p className="contact-wrapper-block__value">+961 71 65 21 29</p>
                 </div>
               </div>
 
@@ -48,7 +48,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <p className="contact-wrapper-block__label">Location</p>
-                  <p className="contact-wrapper-block__value" data-location="Toronto, Canada">Toronto, Canada</p>
+                  <p className="contact-wrapper-block__value" data-location="Saida, Lebanon">Saida, Lebanon</p>
                 </div>
               </div>
 

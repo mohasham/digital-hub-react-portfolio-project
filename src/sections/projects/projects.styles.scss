@@ -10,6 +10,12 @@
     padding-right: $gutter;
   }
 
+  //when on small screens we want to reduce margin-top
+    @media (min-width: $bp-sm) {
+      margin-top: -5rem;
+
+  }
+
   &__container {
     max-width: $container-max;
     margin: 0 auto;
@@ -29,7 +35,7 @@
     color: $on-surface;
     letter-spacing: 0.02em;
 
-      @media (max-width: $bp-sm) {
+    @media (max-width: $bp-sm) {
     font-size: 1rem;
   }
 

@@ -7,7 +7,7 @@ const Footer = () => {
       <div className="app-footer__container">
         <div className="app-footer__branding">
           <div className="app-footer__title">Mohammad Shamma</div>
-          <p className="app-footer__copyright">© 2024 Mohammad Shamma. Built with precision and vision.</p>
+          <p className="app-footer__copyright">© 2026 Mohammad Shamma. Built with precision and vision.</p>
         </div>
         <div className="app-footer__socials">
           <a className="app-footer__link" href="#">GitHub</a>
