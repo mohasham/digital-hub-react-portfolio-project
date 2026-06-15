@@ -24,13 +24,13 @@
 
   &__title {
     font-family: 'Inter', sans-serif;
-    font-size: 48px;
+    font-size: 3rem;
     font-weight: 600;
     color: $on-surface;
     letter-spacing: 0.02em;
 
       @media (max-width: $bp-sm) {
-    font-size: 32px;
+    font-size: 1rem;
   }
 
   @media (max-width: $bp-xs) {

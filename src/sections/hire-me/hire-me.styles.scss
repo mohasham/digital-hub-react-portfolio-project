@@ -30,7 +30,7 @@
 
   &__title {
     font-family: 'Inter', sans-serif;
-    font-size: 48px;
+    font-size: 3rem;
     font-weight: 600;
     color: $on-surface;
     margin-bottom: 2rem;
@@ -123,7 +123,7 @@
   }
 
   @media (max-width: $bp-xs) {
-    font-size: 16px;
+    font-size: 1rem;
   }
 
     &--highlight {

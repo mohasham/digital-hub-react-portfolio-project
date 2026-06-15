@@ -17,7 +17,10 @@ const Hero = () => {
           </p>
           <div className="hero-section__actions">
             <a className="hero-section__btn hero-section__btn--primary" href="#contact">Contact Me</a>
-            <button className="hero-section__btn hero-section__btn--secondary">Download CV</button>
+            
+            <a  href="/Mohammad_Shamma_CV.pdf"
+            download="Mohammad_Shamma_CV.pdf" 
+            className="hero-section__btn hero-section__btn--secondary">Download CV</a>
           </div>
         </div>
         <div className="hero-section__visual-wrapper">

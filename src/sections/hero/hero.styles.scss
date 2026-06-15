@@ -71,14 +71,16 @@
 
 &__title {
   font-family: 'Inter', sans-serif;
-  font-size: 48px;
+  font-size: 3rem;
   font-weight: 700;
   line-height: 1.1;
   letter-spacing: 0.02em;
   color: $on-surface;
 
+  
+
   @media (max-width: $bp-sm) {
-    font-size: 32px;
+    font-size: 2rem;
   }
 
   @media (max-width: $bp-xs) {
@@ -98,7 +100,7 @@
     max-width: 32rem;
 
       @media (min-width: $bp-sm) {
-      font-size: 16px;
+      font-size: 1rem;
     }
     @media (min-width: $bp-md) {
       font-size: 18px;
@@ -123,7 +125,7 @@
 
      @media (min-width: $bp-md) {
       padding: 1rem 2rem;
-      font-size: 16px;
+      font-size: 1rem;
     }
 
     &--primary {

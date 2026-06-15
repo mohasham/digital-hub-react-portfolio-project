@@ -1,3 +1,6 @@
+/* 
+
+
 :root {
   --text: #6b6375;
   --text-h: #08060d;
@@ -108,4 +111,24 @@ code {
   line-height: 135%;
   padding: 4px 8px;
   background: var(--code-bg);
+} */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #f9f9ff;
+  color: #141b2b;
+}
+
+::selection {
+  background-color: #e2dfff;
+  color: #3525cd;
 }

@@ -61,12 +61,16 @@
       border: 1px solid rgba($outline-variant, 0.2);
     }
 
-    &--tertiary {
-      background-color: $tertiary-container;
-      color: $on-tertiary-container;
-      border: 1px solid rgba($outline-variant, 0.2);
-    }
+&--tertiary {
+  background-color: $tertiary-container;
+  color: $on-tertiary-container;
+  border: 1px solid rgba($outline-variant, 0.2);
 
+  .about-bento-section__small-title,
+  .about-bento-section__status-icon {
+    color: $on-tertiary-container;
+  }
+}
     &--high {
       background-color: $surface-container-high;
       border: 1px solid rgba($outline-variant, 0.2);
@@ -95,7 +99,7 @@
 
   &__card-title {
     font-family: 'Inter', sans-serif;
-    font-size: 32px;
+    font-size: 2rem;
     font-weight: 600;
     margin-bottom: 1rem;
 
@@ -113,7 +117,7 @@
 
   &__small-title {
     font-family: 'Inter', sans-serif;
-    font-size: 32px;
+    font-size: 2rem;
     font-weight: 600;
     color: $on-surface;
     margin-bottom: 0.5rem;

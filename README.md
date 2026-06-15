@@ -10,6 +10,30 @@ A professional personal portfolio website built with React, showcasing my backgr
 
 ---
 
+## 📸 Screenshots
+
+> Screenshots coming soon
+
+<!--
+<p align="center">
+  <img src="./screenshots/hero.png" alt="Hero Section" width="800"/>
+</p>
+
+<p align="center">
+  <img src="./screenshots/about.png" alt="About Section" width="800"/>
+</p>
+
+<p align="center">
+  <img src="./screenshots/projects.png" alt="Projects Section" width="800"/>
+</p>
+
+<p align="center">
+  <img src="./screenshots/contact.png" alt="Contact Section" width="800"/>
+</p>
+-->
+
+---
+
 ## 📋 Project Overview
 
 This portfolio is a single-page application (SPA) built with React and styled using SCSS with BEM methodology. It presents my technical expertise, featured projects, and contact information in a clean, modern, and fully responsive design.
@@ -125,8 +149,6 @@ The portfolio is fully responsive across all screen sizes:
 | 320px | `$bp-xs` | Very small / old phones |
 | 480px | `$bp-sm` | Small phones |
 | 768px | `$bp-md` | Tablets and up |
-| 1024px | `$bp-lg` | Small desktops |
-| 1200px | `$bp-xl` | Large desktops |
 
 ---
 
