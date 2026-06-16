@@ -12,11 +12,11 @@ A professional personal portfolio website built with React, showcasing my backgr
 
 ## 📸 Screenshot
 
-<!--
+
 <p align="center">
   <img src="./screenshots/portfolio.png" alt="Portfolio Preview" width="800"/>
 </p>
--->
+
 
 ---
 
