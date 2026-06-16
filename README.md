@@ -14,7 +14,7 @@ A professional personal portfolio website built with React, showcasing my backgr
 
 
 <p align="center">
-  <img src="./screenshots/portfolio.png" alt="Portfolio Preview" width="800"/>
+  <img src="./assets/screenshots/portfolio.png" alt="Portfolio Preview" width="800"/>
 </p>
 
 
