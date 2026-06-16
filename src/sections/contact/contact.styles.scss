@@ -10,6 +10,11 @@
     padding-left: $margin-mobile;
     padding-right: $margin-mobile;
 
+    @media (max-width: $bp-sm) {
+      padding-left: 0.5rem;
+      padding-right: 0.5rem;
+    }
+
     @media (min-width: $bp-md) {
       padding-left: $gutter;
       padding-right: $gutter;
@@ -26,6 +31,12 @@
     gap: 4rem;
     position: relative;
     overflow: hidden;
+
+    @media (max-width: $bp-sm) {
+      padding: 0.75rem;
+      gap: 1.5rem;
+      border-radius: 1.25rem;
+    }
 
     @media (min-width: $bp-md) {
       padding: 5rem;
@@ -56,13 +67,13 @@
     font-weight: 600;
     margin-bottom: 1.5rem;
 
-      @media (max-width: $bp-sm) {
-    font-size: 28px;
-  }
+    @media (max-width: $bp-sm) {
+      font-size: 28px;
+    }
 
-  @media (max-width: $bp-xs) {
-    font-size: 22px;
-  }
+    @media (max-width: $bp-xs) {
+      font-size: 22px;
+    }
 
     &--highlight {
       color: $primary-fixed-dim;
@@ -75,10 +86,10 @@
     font-size: 18px;
     margin-bottom: 3rem;
     max-width: 24rem;
-    
+
     @media (max-width: $bp-xs) {
-    font-size: 15px;
-  }
+      font-size: 15px;
+    }
   }
 
   &__channels {
@@ -91,6 +102,11 @@
     display: flex;
     align-items: center;
     gap: 1.5rem;
+
+    > div:last-child {
+      min-width: 0;
+      flex: 1;
+    }
   }
 
   &__icon-plate {
@@ -101,6 +117,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-shrink: 0;
   }
 
   &__icon {
@@ -119,6 +136,12 @@
     font-size: 1.125rem;
     font-weight: 700;
     margin: 0;
+    word-break: break-word;
+    overflow-wrap: break-word;
+
+    @media (max-width: $bp-sm) {
+      font-size: 0.95rem;
+    }
   }
 
   &__form {
@@ -132,6 +155,10 @@
     position: relative;
     z-index: 10;
     backdrop-filter: blur(4px);
+
+    @media (max-width: $bp-sm) {
+      padding: 0.75rem;
+    }
 
     @media (min-width: $bp-md) {
       padding: 3rem;
@@ -176,25 +203,5 @@
 
   &__textarea {
     resize: none;
-  }
-
-  &__submit-btn {
-    width: 100%;
-    padding: 1rem 0;
-    background-color: $primary;
-    color: $on-primary;
-    border: none;
-    border-radius: 0.75rem;
-    font-weight: 700;
-    cursor: pointer;
-    @include transition-standard;
-
-    &:hover {
-      background-color: rgba($primary, 0.9);
-    }
-
-    &:active {
-      transform: scale(0.95);
-    }
   }
 }

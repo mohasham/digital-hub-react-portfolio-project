@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Button, { BUTTON_TYPE_CLASSES } from '../button/button.component';
 import './header.styles.scss';
 
 const Header = () => {
@@ -33,7 +34,15 @@ const Header = () => {
         <a className="top-nav-bar__link" href="#projects" onClick={(e) => handleNavClick(e, '#projects')}>Projects</a>
         <a className="top-nav-bar__link" href="#contact" onClick={(e) => handleNavClick(e, '#contact')}>Contact</a>
       </div>
-      <a className="top-nav-bar__cta" href="#contact" onClick={(e) => handleNavClick(e, '#contact')}>Get in touch</a>
+      <Button
+        as="a"
+        href="#contact"
+        onClick={(e) => handleNavClick(e, '#contact')}
+        buttonType={BUTTON_TYPE_CLASSES.primary}
+        className="top-nav-bar__cta"
+      >
+        Get in touch
+      </Button>
     </nav>
   );
 };

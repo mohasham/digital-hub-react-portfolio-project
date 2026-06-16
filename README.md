@@ -10,25 +10,11 @@ A professional personal portfolio website built with React, showcasing my backgr
 
 ---
 
-## 📸 Screenshots
-
-> Screenshots coming soon
+## 📸 Screenshot
 
 <!--
 <p align="center">
-  <img src="./screenshots/hero.png" alt="Hero Section" width="800"/>
-</p>
-
-<p align="center">
-  <img src="./screenshots/about.png" alt="About Section" width="800"/>
-</p>
-
-<p align="center">
-  <img src="./screenshots/projects.png" alt="Projects Section" width="800"/>
-</p>
-
-<p align="center">
-  <img src="./screenshots/contact.png" alt="Contact Section" width="800"/>
+  <img src="./screenshots/portfolio.png" alt="Portfolio Preview" width="800"/>
 </p>
 -->
 
@@ -146,9 +132,11 @@ The portfolio is fully responsive across all screen sizes:
 
 | Breakpoint | Variable | Target |
 |------------|----------|--------|
-| 320px | `$bp-xs` | Very small / old phones |
-| 480px | `$bp-sm` | Small phones |
-| 768px | `$bp-md` | Tablets and up |
+| 20em (320px) | `$bp-xs` | Very small / old phones |
+| 30em (480px) | `$bp-sm` | Small phones |
+| 48em (768px) | `$bp-md` | Tablets and up |
+| 64em (1024px) | `$bp-lg` | Small desktops |
+| 75em (1200px) | `$bp-xl` | Large desktops |
 
 ---
 
@@ -171,8 +159,8 @@ The portfolio is fully responsive across all screen sizes:
 
 **Mohammad Shamma**
 - Email: mohammadshamma298@gmail.com
-- GitHub: [github.com/your-username](https://github.com/your-username)
-- LinkedIn: [linkedin.com/in/your-profile](https://linkedin.com/in/your-profile)
+- GitHub: [github.com/your-username](https://github.com/mohasham)
+- LinkedIn: [linkedin.com/in/your-profile](https://www.linkedin.com/in/mohammad-shamma/)
 
 ---
 

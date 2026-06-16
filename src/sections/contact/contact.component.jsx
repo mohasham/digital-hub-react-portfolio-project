@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Button, { BUTTON_TYPE_CLASSES } from '../../components/button/button.component';
 import './contact.styles.scss';
 
 const Contact = () => {
@@ -21,7 +22,7 @@ const Contact = () => {
             <h2 className="contact-wrapper-block__heading">Let's build something <span className="contact-wrapper-block__heading--highlight">visionary</span>.</h2>
             <p className="contact-wrapper-block__lead">Open for freelance projects, collaborations, or full-time opportunities. Let's discuss your next breakthrough.</p>
             <div className="contact-wrapper-block__channels">
-              
+
               <div className="contact-wrapper-block__channel-item">
                 <div className="contact-wrapper-block__icon-plate">
                   <span className="material-symbols-outlined contact-wrapper-block__icon">mail</span>
@@ -48,7 +49,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <p className="contact-wrapper-block__label">Location</p>
-                  <p className="contact-wrapper-block__value" data-location="Saida, Lebanon">Saida, Lebanongit </p>
+                  <p className="contact-wrapper-block__value" data-location="Saida, Lebanon">Saida, Lebanon</p>
                 </div>
               </div>
 
@@ -73,7 +74,14 @@ const Contact = () => {
               <label className="contact-wrapper-block__field-label">Message</label>
               <textarea className="contact-wrapper-block__textarea" rows="4" value={inputs.message} onChange={(e) => handleFormChange(e, 'message')}></textarea>
             </div>
-            <button className="contact-wrapper-block__submit-btn" type="submit">Send Message</button>
+            <Button
+              as="button"
+              type="submit"
+              buttonType={BUTTON_TYPE_CLASSES.submit}
+              className="contact-wrapper-block__submit-btn"
+            >
+              Send Message
+            </Button>
           </form>
         </div>
       </div>
