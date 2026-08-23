@@ -75,6 +75,23 @@
       background-color: $surface-container-high;
       border: 1px solid rgba($outline-variant, 0.2);
     }
+
+    &--wide {
+      @media (min-width: $bp-md) {
+        grid-column: span 2 / span 2;
+      }
+      background-color: $surface-container-highest;
+      border: 1px solid rgba($outline-variant, 0.2);
+      position: relative;
+      overflow: hidden;
+      justify-content: flex-end;
+
+      &:hover {
+        .about-bento-section__icon {
+          transform: scale(1.1);
+        }
+      }
+    }
   }
 
   &__icon-wrapper {
@@ -83,6 +100,11 @@
     right: 0;
     padding: 2rem;
     opacity: 0.2;
+
+    &--accent {
+      opacity: 0.12;
+      color: $primary;
+    }
   }
 
   &__icon {
@@ -108,6 +130,12 @@
   }
   }
 
+  &__card-title--dark {
+    color: $on-surface;
+    position: relative;
+    z-index: 1;
+  }
+
   &__card-text {
     font-family: 'Inter', sans-serif;
     font-size: 18px;
@@ -125,6 +153,12 @@
      @media (max-width: $bp-sm) {
     font-size: 22px;
   }
+  }
+
+  &__card--wide &__muted-text {
+    position: relative;
+    z-index: 1;
+    max-width: 34rem;
   }
 
   &__muted-text {

@@ -1,6 +1,6 @@
-# Mohammad Shamma | Full Stack Web Developer Portfolio
+# Mohammad Shamma | Full Stack Developer Portfolio
 
-A professional personal portfolio website built with React, showcasing my background, skills, projects, and professional value as a Full Stack Web Developer.
+A professional personal portfolio site built with React, showcasing my background, skills, projects, and professional value as a Full Stack Developer.
 
 ---
 
@@ -12,11 +12,11 @@ A professional personal portfolio website built with React, showcasing my backgr
 
 ## 📸 Screenshot
 
-
 <p align="center">
   <img src="src/assets/screenshots/portfolio.png" alt="Portfolio Preview" width="800"/>
 </p>
 
+> ⚠️ Update this screenshot after adding a real profile photo and project images — the current one is from an earlier version of the site.
 
 ---
 
@@ -29,19 +29,24 @@ This portfolio is a single-page application (SPA) built with React and styled us
 ## 🗂 Project Structure
 
 ```
+public/
+├── images/                  # Profile photo and project screenshots
+├── icons.svg                # Social icon sprite reference
+└── Mohammad_Shamma_CV.pdf   # Downloadable CV (linked from Hero)
 src/
-├── assets/                  # Images and static files
+├── assets/                  # Bundled images and static files
 ├── components/
-│   ├── header/              # Fixed navigation bar
-│   ├── footer/              # Site footer
-│   └── project-card/        # Reusable project card component
+│   ├── header/               # Fixed navigation bar with social icons
+│   ├── footer/                # Site footer with social icons
+│   ├── icon/                    # Reusable inline-SVG icon component
+│   └── project-card/         # Reusable project card component
 ├── sections/
 │   ├── hero/                # Hero / intro section
-│   ├── technologies/        # Technical ecosystem (Frontend, Backend, Tools)
-│   ├── about/               # Core expertise bento cards
-│   ├── projects/            # Featured works
-│   ├── hire-me/             # Why collaborate + quote card
-│   └── contact/             # Contact form
+│   ├── technologies/         # Technical ecosystem (Frontend, Backend, Tools)
+│   ├── about/                  # Core expertise bento cards
+│   ├── projects/              # Featured works
+│   ├── hire-me/                # Why collaborate + quote card
+│   └── contact/                # Contact form
 ├── pages/
 │   └── home/                # Home page — assembles all sections
 ├── styles/
@@ -61,7 +66,7 @@ src/
 | Language | JavaScript (JSX) |
 | Styling | SCSS with BEM methodology |
 | Fonts | Inter, JetBrains Mono (Google Fonts) |
-| Icons | Material Symbols Outlined (Google) |
+| Icons | Custom inline SVG icon set (no external font dependency) |
 | Build Tool | Vite |
 | State Management | React Hooks (useState, useEffect) |
 | Routing | None — single page with smooth scroll |
@@ -82,8 +87,8 @@ Make sure you have the following installed:
 **1. Clone the repository**
 
 ```bash
-git clone https://github.com/your-username/portfolio.git
-cd portfolio
+git clone https://github.com/mohasham/digital-hub-react-portfolio-project.git
+cd digital-hub-react-portfolio-project
 ```
 
 **2. Install dependencies**
@@ -142,16 +147,17 @@ The portfolio is fully responsive across all screen sizes:
 
 ## ✨ Features
 
-- Fixed glassmorphism navigation bar with scroll effect
+- Fixed glassmorphism navigation bar with scroll effect and inline social icons
 - Animated hero section with floating image
-- Technical ecosystem cards (Frontend, Backend, Tools)
-- Core expertise bento grid
-- Featured projects with hover overlay
+- Technical ecosystem cards (Frontend, Backend, Data & Security, AI & Delivery)
+- Core expertise bento grid, including MVC/backend foundations
+- Featured projects with hover overlay and clickable GitHub repo links
 - Why collaborate section with quote card
 - Contact form with controlled React state
 - Fully responsive down to 320px
 - SCSS BEM methodology throughout
 - CSS custom properties for theming
+- Self-contained inline SVG icons — no external icon font dependency
 
 ---
 
@@ -159,8 +165,8 @@ The portfolio is fully responsive across all screen sizes:
 
 **Mohammad Shamma**
 - Email: mohammadshamma298@gmail.com
-- GitHub: [github.com/your-username](https://github.com/mohasham)
-- LinkedIn: [linkedin.com/in/your-profile](https://www.linkedin.com/in/mohammad-shamma/)
+- GitHub: [github.com/mohasham](https://github.com/mohasham)
+- LinkedIn: [linkedin.com/in/mohammad-shamma](https://www.linkedin.com/in/mohammad-shamma/)
 
 ---
 

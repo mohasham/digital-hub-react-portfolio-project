@@ -1,5 +1,6 @@
 import React from 'react';
 import './hire-me.styles.scss';
+import Icon from '../../components/icon/icon.component';
 
 const HireMe = () => {
   return (
@@ -7,36 +8,36 @@ const HireMe = () => {
       <div className="hire-me-pitch__container">
         <div className="hire-me-pitch__grid">
           <div>
-            <h2 className="hire-me-pitch__title">Why Collaborate?</h2>
+            <h2 className="hire-me-pitch__title">Why Work With Me?</h2>
             <ul className="hire-me-pitch__list">
-              
+
               <li className="hire-me-pitch__item">
                 <div className="hire-me-pitch__icon-badge">
-                  <span className="material-symbols-outlined hire-me-pitch__check">check</span>
+                  <Icon name="check" className="material-symbols-outlined hire-me-pitch__check" />
                 </div>
                 <div>
-                  <h4 className="hire-me-pitch__item-heading">Foundation of Excellence</h4>
-                  <p className="hire-me-pitch__item-desc">Rigorous adherence to standard best practices and modern design patterns.</p>
+                  <h4 className="hire-me-pitch__item-heading">End-to-End Ownership</h4>
+                  <p className="hire-me-pitch__item-desc">I take features from database schema to deployed UI — design, build, secure, and ship.</p>
                 </div>
               </li>
 
               <li className="hire-me-pitch__item">
                 <div className="hire-me-pitch__icon-badge">
-                  <span className="material-symbols-outlined hire-me-pitch__check">bolt</span>
+                  <Icon name="bolt" className="material-symbols-outlined hire-me-pitch__check" />
                 </div>
                 <div>
-                  <h4 className="hire-me-pitch__item-heading">Agile Adaptation</h4>
-                  <p className="hire-me-pitch__item-desc">Quick to learn and integrate new technologies to meet specific project needs.</p>
+                  <h4 className="hire-me-pitch__item-heading">Fast to Learn</h4>
+                  <p className="hire-me-pitch__item-desc">Quick to pick up new tools and frameworks — from AI APIs to whatever a project needs.</p>
                 </div>
               </li>
 
               <li className="hire-me-pitch__item">
                 <div className="hire-me-pitch__icon-badge">
-                  <span className="material-symbols-outlined hire-me-pitch__check">visibility</span>
+                  <Icon name="visibility" className="material-symbols-outlined hire-me-pitch__check" />
                 </div>
                 <div>
-                  <h4 className="hire-me-pitch__item-heading">Product Vision</h4>
-                  <p className="hire-me-pitch__item-desc">Understanding the 'Why' behind every line of code to drive business value.</p>
+                  <h4 className="hire-me-pitch__item-heading">Security-Minded</h4>
+                  <p className="hire-me-pitch__item-desc">I think about auth, validation, and edge cases early — not as an afterthought.</p>
                 </div>
               </li>
 
@@ -44,15 +45,15 @@ const HireMe = () => {
           </div>
           <div className="hire-me-pitch__testimonial-container">
             <div className="hire-me-pitch__card">
-              <span className="material-symbols-outlined hire-me-pitch__quote-mark">format_quote</span>
+              <Icon name="format_quote" className="material-symbols-outlined hire-me-pitch__quote-mark" />
               <blockquote className="hire-me-pitch__quote">
-                "My approach is a unique blend of <span className="hire-me-pitch__quote--highlight">precision and vision</span>. I don't just write code; I architect solutions that evolve with your users."
+                "I don't just make things work — I build them to be <span className="hire-me-pitch__quote--highlight">secure, scalable, and clean</span>, so they hold up long after launch."
               </blockquote>
               <div className="hire-me-pitch__author-box">
                 <div className="hire-me-pitch__avatar"></div>
                 <div>
                   <p className="hire-me-pitch__author-name">Mohammad Shamma</p>
-                  <p className="hire-me-pitch__author-role">Full Stack Developer</p>
+                  <p className="hire-me-pitch__author-role">Full-Stack Web Developer</p>
                 </div>
               </div>
             </div>

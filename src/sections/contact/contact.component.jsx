@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Button, { BUTTON_TYPE_CLASSES } from '../../components/button/button.component';
 import './contact.styles.scss';
+import Icon from '../../components/icon/icon.component';
 
 const Contact = () => {
   const [inputs, setInputs] = useState({ name: '', email: '', subject: '', message: '' });
@@ -25,7 +26,7 @@ const Contact = () => {
 
               <div className="contact-wrapper-block__channel-item">
                 <div className="contact-wrapper-block__icon-plate">
-                  <span className="material-symbols-outlined contact-wrapper-block__icon">mail</span>
+                  <Icon name="mail" className="material-symbols-outlined contact-wrapper-block__icon" />
                 </div>
                 <div>
                   <p className="contact-wrapper-block__label">Email me</p>
@@ -35,17 +36,17 @@ const Contact = () => {
 
               <div className="contact-wrapper-block__channel-item">
                 <div className="contact-wrapper-block__icon-plate">
-                  <span className="material-symbols-outlined contact-wrapper-block__icon">call</span>
+                  <Icon name="call" className="material-symbols-outlined contact-wrapper-block__icon" />
                 </div>
                 <div>
                   <p className="contact-wrapper-block__label">Call me</p>
-                  <p className="contact-wrapper-block__value">+961 71 65 21 29</p>
+                  <p className="contact-wrapper-block__value">+961 71 652 129</p>
                 </div>
               </div>
 
               <div className="contact-wrapper-block__channel-item">
                 <div className="contact-wrapper-block__icon-plate">
-                  <span className="material-symbols-outlined contact-wrapper-block__icon">location_on</span>
+                  <Icon name="location_on" className="material-symbols-outlined contact-wrapper-block__icon" />
                 </div>
                 <div>
                   <p className="contact-wrapper-block__label">Location</p>

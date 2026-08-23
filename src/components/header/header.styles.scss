@@ -59,6 +59,44 @@
     }
   }
 
+  &__right {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    @media (min-width: $bp-md) {
+      gap: 1rem;
+    }
+  }
+
+  &__socials {
+    display: none;
+
+    @media (min-width: $bp-sm) {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+  }
+
+  &__social {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 9999px;
+    color: $secondary;
+    background-color: transparent;
+    @include transition-standard;
+
+    &:hover {
+      color: $primary;
+      background-color: rgba($primary, 0.08);
+      transform: translateY(-2px);
+    }
+  }
+
   &__cta {
     background-color: $primary-container;
     color: $on-primary;

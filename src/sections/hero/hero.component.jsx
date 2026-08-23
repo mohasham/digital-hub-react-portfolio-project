@@ -11,10 +11,12 @@ const Hero = () => {
           <div className="hero-section__badge">Available for opportunities</div>
           <h1 className="hero-section__title">
             Mohammad Shamma<br />
-            <span className="hero-section__title--highlight">Architectural Precision</span> in Full Stack Web Development
+            <span className="hero-section__title--highlight">Full-Stack Developer</span> building secure, scalable web apps
           </h1>
           <p className="hero-section__lead">
-            Engineering digital experiences where structural integrity meets aesthetic elegance. I build scalable, high-performance web applications with a focus on clean code and user-centric vision.
+            I design and ship end-to-end applications across the MERN and Next.js stacks — from
+            secure REST APIs and role-based auth to responsive, AI-integrated interfaces.
+            Clean architecture, real features, production-ready code.
           </p>
           <div className="hero-section__actions">
             <Button as="a" href="#contact" buttonType={BUTTON_TYPE_CLASSES.primary}>
@@ -36,7 +38,7 @@ const Hero = () => {
             <img
               className="hero-section__photo"
               alt="Mohammad Shamma"
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuDDNnDGfbs4NriYel7WmRiY4Peiq74-bTBxGvf0p657XnyMztXEbS03_RCtHpV6w2ygCjwYtL9sYTKC55Kuy70LHJtAkVGyAyRlyc_aWttBcWX4U5Pa0c8SjaqmoKSFSYXJu_-ieLo_XDCxsTIaOPSghrC4XdW0DcvBFXxdcG3PbwY3p8SGNOYZs1vMJOCcE0VkH77VxLguYQGkn7PqKEhLGtMRly5rFXR1rhPw8ZgNm-KhfWx-5-rpi02GQ4ZCmgtI6ixGcYZE6C8"
+              src="images/profile.jpeg"
             />
             <div className="hero-section__image-overlay"></div>
           </div>
