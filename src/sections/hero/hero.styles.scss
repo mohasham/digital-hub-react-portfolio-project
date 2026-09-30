@@ -1,184 +1,351 @@
-@import '../../styles/config';
+@use '../../styles/config' as *;
 
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-20px); }
+// One orchestrated entrance: every child declares its --step and inherits
+// the same curve, so the hero assembles in a single readable sweep.
+@keyframes hero-in {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 20px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 
-@keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: .5; }
+@keyframes hero-line-in {
+  from {
+    transform: translate3d(0, 106%, 0) rotate(2.5deg);
+  }
+  to {
+    transform: none;
+  }
 }
 
-.hero-section {
-  min-height: 100vh;
-  padding-top: 8rem;
-  padding-bottom: $section-padding;
-  padding-left: $margin-mobile;
-  padding-right: $margin-mobile;
-  display: flex;
-  align-items: center;
+@keyframes hero-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -12px, 0);
+  }
+}
+
+@keyframes hero-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(95, 224, 192, 0.55);
+  }
+  70% {
+    box-shadow: 0 0 0 9px rgba(95, 224, 192, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(95, 224, 192, 0);
+  }
+}
+
+.hero {
   position: relative;
-  overflow: hidden;
+  padding-top: clamp(118px, 15vh, 168px);
 
-  @media (min-width: $bp-md) {
-    padding-left: $gutter;
-    padding-right: $gutter;
-  }
-
-  &__gradient-mesh {
-    position: absolute;
-    inset: 0;
-    @include hero-gradient;
-    z-index: -10;
-  }
-
-  &__container {
-    max-width: $container-max;
-    margin: 0 auto;
-    width: 100%;
+  &__inner {
+    @include shell;
     display: grid;
-    grid-template-columns: 1fr;
-    gap: $stack-lg;
+    grid-template-columns: minmax(0, 1.18fr) minmax(0, 0.82fr);
+    gap: clamp(32px, 5vw, 70px);
     align-items: center;
+    padding-bottom: clamp(48px, 7vw, 86px);
 
-    @media (min-width: $bp-md) {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+    @include below($bp-lg) {
+      grid-template-columns: 1fr;
     }
   }
 
-  &__content {
-    display: flex;
-    flex-direction: column;
-    gap: $stack-md;
+  // Shared entrance for all direct pieces
+  &__status,
+  &__lead,
+  &__focus,
+  &__actions,
+  &__stats,
+  &__visual,
+  &__ticker {
+    opacity: 0;
+    animation: hero-in 0.85s var(--ease-out) forwards;
+    animation-delay: calc(var(--step, 0) * 105ms + 120ms);
   }
 
-  &__badge {
+  // ---- status pill --------------------------------------------------
+  &__status {
     display: inline-flex;
     align-items: center;
-    align-self: flex-start;
-    padding: 0.25rem 1rem;
-    border-radius: 9999px;
-    background-color: $surface-container-high;
-    color: $primary;
-    font-family: 'Inter', sans-serif;
-    font-size: 14px;
+    gap: 10px;
+    padding: 7px 15px 7px 12px;
+    border: 1px solid var(--line);
+    border-radius: var(--r-pill);
+    background: rgba(95, 224, 192, 0.07);
+    font-size: 0.85rem;
     font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    color: var(--text-dim);
   }
 
+  &__pulse {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--foam);
+    animation: hero-pulse 2.4s var(--ease-soft) infinite;
+  }
+
+  // ---- headline ------------------------------------------------------
   &__title {
-    font-family: 'Inter', sans-serif;
-    font-size: 3rem;
-    font-weight: 700;
-    line-height: 1.1;
-    letter-spacing: 0.02em;
-    color: $on-surface;
-
-    @media (max-width: $bp-sm) {
-      font-size: 2rem;
-    }
-
-    @media (max-width: $bp-xs) {
-      font-size: 26px;
-    }
-
-    &--highlight {
-      color: $primary;
-    }
+    margin-top: 24px;
+    font-size: clamp(2.05rem, 5.6vw, 4.1rem);
+    line-height: 0.98;
+    letter-spacing: -0.04em;
+    font-weight: 800;
   }
 
+  // The name sits a tier below the statement — it identifies, the
+  // statement is what the page is actually saying.
+  &__name {
+    display: block;
+    overflow: hidden;
+    margin-bottom: 0.32em;
+    font-size: 0.31em;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    line-height: 1.2;
+    color: var(--text-dim);
+  }
+
+  &__line {
+    display: block;
+    overflow: hidden;
+    padding-block: 0.06em;
+  }
+
+  &__name .hero__line-inner,
+  &__line-inner {
+    display: block;
+    transform: translate3d(0, 106%, 0);
+    animation: hero-line-in 0.95s var(--ease-out) forwards;
+    animation-delay: calc(var(--step, 0) * 105ms + 120ms);
+  }
+
+  // The middle line is drawn rather than filled — the type itself
+  // carries the "what you don't see" idea.
+  &__line--outline .hero__line-inner {
+    color: transparent;
+    -webkit-text-stroke: 1.4px var(--amber);
+    text-shadow: 0 0 34px rgba(242, 179, 91, 0.28);
+  }
+
+  // ---- copy -----------------------------------------------------------
   &__lead {
-    font-family: 'Inter', sans-serif;
-    font-size: 18px;
-    line-height: 1.6;
-    color: $secondary;
-    max-width: 32rem;
+    margin-top: 26px;
+    max-width: 54ch;
+    font-size: 1.06rem;
+    color: var(--text-dim);
+  }
 
-    @media (min-width: $bp-sm) {
-      font-size: 1rem;
-    }
-    @media (min-width: $bp-md) {
-      font-size: 18px;
+  &__focus {
+    margin-top: 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    font-size: 0.95rem;
+    color: var(--muted);
+  }
+
+  &__focus-prefix {
+    white-space: nowrap;
+  }
+
+  &__focus-rotator {
+    position: relative;
+    display: inline-block;
+    height: 1.7em;
+    min-width: 17em;
+    overflow: hidden;
+    vertical-align: bottom;
+
+    @include below($bp-sm) {
+      min-width: 100%;
     }
   }
 
+  &__focus-item {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    font-family: var(--font-mono);
+    font-size: 0.88rem;
+    color: var(--foam);
+    opacity: 0;
+    transform: translate3d(0, 100%, 0);
+    transition: opacity 0.5s var(--ease-out), transform 0.55s var(--ease-out);
+
+    &--on {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  // ---- actions --------------------------------------------------------
   &__actions {
+    margin-top: 34px;
     display: flex;
     flex-wrap: wrap;
-    gap: 1rem;
-    padding-top: 1rem;
+    gap: 14px;
   }
 
-  &__visual-wrapper {
-    position: relative;
+  // ---- stats ----------------------------------------------------------
+  &__stats {
+    margin-top: 52px;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+    padding-top: 28px;
+    border-top: 1px solid var(--line);
+
+    @include below($bp-sm) {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+  }
+
+  &__stat {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    gap: 3px;
+  }
 
-    @media (min-width: $bp-md) {
-      justify-content: flex-end;
+  &__stat-value {
+    font-family: var(--font-display);
+    font-size: clamp(1.7rem, 3vw, 2.15rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: var(--amber);
+    line-height: 1;
+  }
+
+  &__stat-label {
+    font-size: 0.83rem;
+    line-height: 1.4;
+    color: var(--muted);
+    max-width: 22ch;
+  }
+
+  // ---- portrait --------------------------------------------------------
+  &__visual {
+    position: relative;
+    justify-self: center;
+    width: min(100%, 420px);
+
+    // Below the fold rules on a phone: the headline must arrive first,
+    // so the portrait follows the copy rather than leading it.
+    @include below($bp-lg) {
+      width: min(100%, 300px);
+      margin-top: 8px;
+    }
+
+    @include below($bp-md) {
+      width: min(78%, 270px);
     }
   }
 
-  &__image-frame {
+  &__portrait {
     position: relative;
-    width: 100%;
-    max-width: 28rem;
-    aspect-ratio: 1 / 1;
-    border-radius: 2rem;
+    // An arch rather than another rounded rectangle.
+    border-radius: 210px 210px 30px 30px;
     overflow: hidden;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-    border: 4px solid rgba(255, 255, 255, 0.5);
-    animation: float 6s ease-in-out infinite;
-
-    @media (min-width: $bp-sm) {
-      max-width: 20rem;
-    }
-    @media (min-width: $bp-md) {
-      max-width: 28rem;
-    }
+    border: 1px solid var(--line-strong);
+    background: linear-gradient(180deg, rgba(23, 65, 95, 0.6), rgba(7, 26, 43, 0.9));
+    box-shadow: 0 40px 90px -50px rgba(0, 0, 0, 0.95);
+    animation: hero-float 8s var(--ease-soft) infinite;
   }
 
   &__photo {
     width: 100%;
-    height: 100%;
+    aspect-ratio: 5 / 6;
     object-fit: cover;
-    filter: grayscale(100%);
-    @include transition-standard;
-    transition-duration: 0.7s;
-
-    &:hover {
-      filter: grayscale(0%);
-    }
+    object-position: center 18%;
+    filter: saturate(0.92) contrast(1.05);
+    transition: transform 0.9s var(--ease-out), filter 0.6s var(--ease-soft);
   }
 
-  &__image-overlay {
+  &__portrait:hover &__photo {
+    transform: scale(1.04);
+    filter: saturate(1.05) contrast(1.02);
+  }
+
+  // Warm light washing the portrait from the top left.
+  &__portrait-ring {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to top, rgba($primary, 0.3), transparent);
+    pointer-events: none;
+    background:
+      linear-gradient(180deg, rgba(242, 179, 91, 0.16), transparent 42%),
+      linear-gradient(0deg, rgba(4, 16, 27, 0.92), transparent 55%);
   }
 
-  &__decor {
+  &__chip {
     position: absolute;
-    border-radius: 9999px;
-    filter: blur(64px);
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 8px 13px;
+    border: 1px solid var(--line-strong);
+    border-radius: var(--r-pill);
+    background: rgba(7, 26, 43, 0.82);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+    color: var(--text);
+    white-space: nowrap;
+    animation: hero-float 7s var(--ease-soft) infinite;
 
-    &--bottom {
-      bottom: -1.5rem;
-      left: -1.5rem;
-      width: 8rem;
-      height: 8rem;
-      background-color: rgba($primary, 0.1);
+    &--one {
+      top: 16%;
+      left: -14%;
+      color: var(--foam);
+      animation-delay: -1.4s;
     }
 
-    &--top {
-      top: -2.5rem;
-      right: -2.5rem;
-      width: 12rem;
-      height: 12rem;
-      background-color: rgba($tertiary, 0.1);
+    &--two {
+      top: 52%;
+      right: -16%;
+      color: var(--amber);
+      animation-delay: -3.2s;
     }
+
+    &--three {
+      bottom: 7%;
+      left: -8%;
+      animation-delay: -5s;
+    }
+
+    @include below($bp-md) {
+      font-size: 0.68rem;
+      padding: 6px 10px;
+
+      &--one {
+        left: -6%;
+      }
+      &--two {
+        right: -6%;
+      }
+      &--three {
+        left: -2%;
+      }
+    }
+  }
+
+  // ---- ticker ----------------------------------------------------------
+  &__ticker {
+    margin-top: 10px;
   }
 }

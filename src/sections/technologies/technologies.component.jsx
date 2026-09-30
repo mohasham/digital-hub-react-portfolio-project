@@ -1,69 +1,114 @@
-import React from 'react';
-import './technologies.styles.scss';
+import Reveal from '../../components/reveal/reveal.component';
 import Icon from '../../components/icon/icon.component';
+import { useReveal, usePointerPanel } from '../../hooks/use-reveal';
+import './technologies.styles.scss';
+
+const GROUPS = [
+  {
+    icon: 'terminal',
+    title: 'Frontend',
+    items: [
+      'React.js',
+      'Next.js',
+      'TypeScript',
+      'JavaScript (ES6+)',
+      'Zustand',
+      'TanStack Query',
+      'HTML5 / CSS3',
+      'SSR · CSR · SSG',
+    ],
+  },
+  {
+    icon: 'dns',
+    title: 'Backend',
+    items: [
+      'Node.js',
+      'Express.js',
+      'Python',
+      'FastAPI',
+      'Django',
+      'RESTful APIs',
+      'Clean Architecture',
+      'SOLID principles',
+    ],
+  },
+  {
+    icon: 'database',
+    title: 'Data & security',
+    items: [
+      'PostgreSQL',
+      'MySQL',
+      'MongoDB / Mongoose',
+      'Supabase',
+      'JWT',
+      'RBAC',
+      'Row Level Security',
+      'Secure cookies',
+    ],
+  },
+  {
+    icon: 'smart_toy',
+    title: 'AI & delivery',
+    items: [
+      'LLMs & prompt engineering',
+      'Groq / OpenAI APIs',
+      'RAG',
+      'Git & GitHub',
+      'GitHub Actions / CI-CD',
+      'Jest & Vitest',
+      'Cloud deployment',
+      'Core Web Vitals / SEO',
+    ],
+  },
+];
+
+const SkillGroup = ({ group, index }) => {
+  const panelRef = usePointerPanel();
+
+  return (
+    <Reveal variant="up" delay={index * 90} className="skills__cell">
+      <div className="skills__card" ref={panelRef}>
+        <div className="skills__card-head">
+          <span className="skills__icon">
+            <Icon name={group.icon} size="19px" />
+          </span>
+          <h3 className="skills__group-title">{group.title}</h3>
+        </div>
+        <ul className="skills__list">
+          {group.items.map((item) => (
+            <li className="skills__item" key={item}>
+              {item}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </Reveal>
+  );
+};
 
 const Technologies = () => {
+  const sectionRef = useReveal();
+
   return (
-    <section className="tech-section" id="expertise">
-      <div className="tech-section__container">
-        <div className="tech-section__header">
-          <h2 className="tech-section__title">Technical Skills</h2>
-          <p className="tech-section__subtitle">The stack I reach for to build modern, secure, and scalable web products end-to-end.</p>
-        </div>
-        <div className="tech-section__grid">
+    <section className="skills" id="skills" ref={sectionRef}>
+      <div className="skills__inner">
+        <header className="skills__head">
+          <Reveal as="p" className="skills__eyebrow">
+            Toolkit
+          </Reveal>
+          <Reveal as="h2" variant="mask" delay={60} className="skills__title">
+            What I reach for, and why
+          </Reveal>
+          <Reveal as="p" delay={120} className="skills__intro">
+            Grouped by the layer it lives in rather than by how well I know it — every
+            item here has been used in something that shipped.
+          </Reveal>
+        </header>
 
-          <div className="tech-section__group-card">
-            <div className="tech-section__icon-box">
-              <Icon name="terminal" className="material-symbols-outlined tech-section__icon" />
-            </div>
-            <h3 className="tech-section__group-title">Frontend</h3>
-            <ul className="tech-section__list">
-              <li className="tech-section__item"><span className="tech-section__bullet"></span><span className="tech-section__name">React & Next.js</span></li>
-              <li className="tech-section__item"><span className="tech-section__bullet"></span><span className="tech-section__name">TypeScript (ES6+)</span></li>
-              <li className="tech-section__item"><span className="tech-section__bullet"></span><span className="tech-section__name">Zustand & TanStack Query</span></li>
-              <li className="tech-section__item"><span className="tech-section__bullet"></span><span className="tech-section__name">SCSS / Tailwind CSS</span></li>
-            </ul>
-          </div>
-
-          <div className="tech-section__group-card">
-            <div className="tech-section__icon-box">
-              <Icon name="dns" className="material-symbols-outlined tech-section__icon" />
-            </div>
-            <h3 className="tech-section__group-title">Backend</h3>
-            <ul className="tech-section__list">
-              <li className="tech-section__item"><span className="tech-section__bullet"></span><span className="tech-section__name">Node.js / Express</span></li>
-              <li className="tech-section__item"><span className="tech-section__bullet"></span><span className="tech-section__name">Python / FastAPI / Django</span></li>
-              <li className="tech-section__item"><span className="tech-section__bullet"></span><span className="tech-section__name">RESTful APIs</span></li>
-              <li className="tech-section__item"><span className="tech-section__bullet"></span><span className="tech-section__name">Clean Architecture / SOLID</span></li>
-            </ul>
-          </div>
-
-          <div className="tech-section__group-card">
-            <div className="tech-section__icon-box">
-              <Icon name="database" className="material-symbols-outlined tech-section__icon" />
-            </div>
-            <h3 className="tech-section__group-title">Data & Security</h3>
-            <ul className="tech-section__list">
-              <li className="tech-section__item"><span className="tech-section__bullet"></span><span className="tech-section__name">MongoDB / Mongoose</span></li>
-              <li className="tech-section__item"><span className="tech-section__bullet"></span><span className="tech-section__name">MySQL / SQL / NoSQL</span></li>
-              <li className="tech-section__item"><span className="tech-section__bullet"></span><span className="tech-section__name">JWT / RBAC / Secure Cookies</span></li>
-              <li className="tech-section__item"><span className="tech-section__bullet"></span><span className="tech-section__name">Auth & Authorization</span></li>
-            </ul>
-          </div>
-
-          <div className="tech-section__group-card">
-            <div className="tech-section__icon-box">
-              <Icon name="smart_toy" className="material-symbols-outlined tech-section__icon" />
-            </div>
-            <h3 className="tech-section__group-title">AI & Delivery</h3>
-            <ul className="tech-section__list">
-              <li className="tech-section__item"><span className="tech-section__bullet"></span><span className="tech-section__name">LLMs & Prompt Engineering</span></li>
-              <li className="tech-section__item"><span className="tech-section__bullet"></span><span className="tech-section__name">AI API Integration</span></li>
-              <li className="tech-section__item"><span className="tech-section__bullet"></span><span className="tech-section__name">Git / GitHub Actions / CI/CD</span></li>
-              <li className="tech-section__item"><span className="tech-section__bullet"></span><span className="tech-section__name">Jest / Vitest Testing</span></li>
-            </ul>
-          </div>
-
+        <div className="skills__grid">
+          {GROUPS.map((group, index) => (
+            <SkillGroup group={group} index={index} key={group.title} />
+          ))}
         </div>
       </div>
     </section>

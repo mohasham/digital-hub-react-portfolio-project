@@ -1,64 +1,82 @@
-import React from 'react';
-import './hire-me.styles.scss';
+import Reveal from '../../components/reveal/reveal.component';
 import Icon from '../../components/icon/icon.component';
+import { useReveal, usePointerPanel } from '../../hooks/use-reveal';
+import './hire-me.styles.scss';
+
+const REASONS = [
+  {
+    icon: 'layers',
+    title: 'One person, the whole slice',
+    body: 'Schema, endpoint, guard, screen. Features do not stall waiting for a hand-off between layers.',
+  },
+  {
+    icon: 'bolt',
+    title: 'New tools stop being new quickly',
+    body: 'FastAPI, Supabase, the Groq API — each of these went from unfamiliar to shipped inside one project.',
+  },
+  {
+    icon: 'visibility',
+    title: 'Edge cases early',
+    body: 'Auth, validation and the awkward paths get designed with the feature, not patched in after review.',
+  },
+];
 
 const HireMe = () => {
+  const sectionRef = useReveal();
+  const quoteRef = usePointerPanel();
+
   return (
-    <section className="hire-me-pitch">
-      <div className="hire-me-pitch__container">
-        <div className="hire-me-pitch__grid">
-          <div>
-            <h2 className="hire-me-pitch__title">Why Work With Me?</h2>
-            <ul className="hire-me-pitch__list">
+    <section className="pitch" ref={sectionRef}>
+      <div className="pitch__inner">
+        <div className="pitch__grid">
+          <div className="pitch__col">
+            <Reveal as="p" className="pitch__eyebrow">
+              Working together
+            </Reveal>
+            <Reveal as="h2" variant="mask" delay={60} className="pitch__title">
+              What you get on day one
+            </Reveal>
 
-              <li className="hire-me-pitch__item">
-                <div className="hire-me-pitch__icon-badge">
-                  <Icon name="check" className="material-symbols-outlined hire-me-pitch__check" />
-                </div>
-                <div>
-                  <h4 className="hire-me-pitch__item-heading">End-to-End Ownership</h4>
-                  <p className="hire-me-pitch__item-desc">I take features from database schema to deployed UI — design, build, secure, and ship.</p>
-                </div>
-              </li>
-
-              <li className="hire-me-pitch__item">
-                <div className="hire-me-pitch__icon-badge">
-                  <Icon name="bolt" className="material-symbols-outlined hire-me-pitch__check" />
-                </div>
-                <div>
-                  <h4 className="hire-me-pitch__item-heading">Fast to Learn</h4>
-                  <p className="hire-me-pitch__item-desc">Quick to pick up new tools and frameworks — from AI APIs to whatever a project needs.</p>
-                </div>
-              </li>
-
-              <li className="hire-me-pitch__item">
-                <div className="hire-me-pitch__icon-badge">
-                  <Icon name="visibility" className="material-symbols-outlined hire-me-pitch__check" />
-                </div>
-                <div>
-                  <h4 className="hire-me-pitch__item-heading">Security-Minded</h4>
-                  <p className="hire-me-pitch__item-desc">I think about auth, validation, and edge cases early — not as an afterthought.</p>
-                </div>
-              </li>
-
+            <ul className="pitch__list">
+              {REASONS.map((reason, index) => (
+                <Reveal
+                  as="li"
+                  key={reason.title}
+                  variant="left"
+                  delay={140 + index * 100}
+                  className="pitch__item"
+                >
+                  <span className="pitch__badge">
+                    <Icon name={reason.icon} size="18px" />
+                  </span>
+                  <div>
+                    <h3 className="pitch__item-title">{reason.title}</h3>
+                    <p className="pitch__item-body">{reason.body}</p>
+                  </div>
+                </Reveal>
+              ))}
             </ul>
           </div>
-          <div className="hire-me-pitch__testimonial-container">
-            <div className="hire-me-pitch__card">
-              <Icon name="format_quote" className="material-symbols-outlined hire-me-pitch__quote-mark" />
-              <blockquote className="hire-me-pitch__quote">
-                "I don't just make things work — I build them to be <span className="hire-me-pitch__quote--highlight">secure, scalable, and clean</span>, so they hold up long after launch."
+
+          <Reveal variant="right" delay={120} className="pitch__quote-col">
+            <figure className="pitch__quote-card" ref={quoteRef}>
+              <Icon name="format_quote" size="42px" className="pitch__quote-mark" />
+              <blockquote className="pitch__quote">
+                Making it work is the first half of the job. The second half is making sure
+                it still works when someone else touches it, and that nobody can reach data
+                that is not theirs.
               </blockquote>
-              <div className="hire-me-pitch__author-box">
-                <div className="hire-me-pitch__avatar"></div>
-                <div>
-                  <p className="hire-me-pitch__author-name">Mohammad Shamma</p>
-                  <p className="hire-me-pitch__author-role">Full-Stack Web Developer</p>
-                </div>
-              </div>
-            </div>
-            <div className="hire-me-pitch__blur-decor"></div>
-          </div>
+              <figcaption className="pitch__author">
+                <span className="pitch__avatar" aria-hidden="true">
+                  MS
+                </span>
+                <span>
+                  <span className="pitch__author-name">Mohammad Shamma</span>
+                  <span className="pitch__author-role">Full-stack developer, Saida</span>
+                </span>
+              </figcaption>
+            </figure>
+          </Reveal>
         </div>
       </div>
     </section>

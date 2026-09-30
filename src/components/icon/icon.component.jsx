@@ -1,7 +1,6 @@
-import React from 'react';
 
-// Inline SVG icon set (Material Symbols style) so icons never depend on an
-// external font loading. Each path is drawn on a 24x24 viewBox.
+// Inline SVG icons on a 24x24 grid, so nothing depends on an icon font
+// finishing its download before the page looks finished.
 const ICONS = {
   architecture: 'M12 2 4 7v2h16V7l-8-5zm-1 9H5v9h2v-7h4v7h2v-9h-2zm8 0h-4v2h2v7h2v-9z',
   security: 'M12 1 3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z',
@@ -21,6 +20,15 @@ const ICONS = {
   call: 'M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.18z',
   location_on: 'M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z',
   arrow_forward: 'M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z',
+  arrow_outward: 'M6 19.5 4.5 18 15 7.5H5.5v-2H19v13.5h-2V9L6 19.5z',
+  download: 'M12 16 7 11l1.4-1.4 2.6 2.6V4h2v8.2l2.6-2.6L17 11l-5 5zM5 20v-5h2v3h10v-3h2v5H5z',
+  school: 'M12 3 1 9l11 6 9-4.91V17h2V9L12 3zM5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z',
+  translate: 'M12.9 15l-2.6-2.6.03-.03A17.5 17.5 0 0 0 13.98 6H17V4h-7V2H8v2H1v2h11.2A15.4 15.4 0 0 1 9 10.85 15.6 15.6 0 0 1 6.85 8H4.85A17.6 17.6 0 0 0 7.6 12.37L3 16.9 4.4 18.3l4.6-4.6 2.86 2.86.74-1.56zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7 1.62-4.33L19.12 17h-3.24z',
+  briefcase: 'M20 6h-4V4c0-1.1-.9-2-2-2h-4c-1.1 0-2 .9-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z',
+  layers: 'M11.99 18.54 4.62 12.81 3 14.07l9 7 9-7-1.63-1.27-7.38 5.74zM12 16l7.36-5.73L21 9l-9-7-9 7 1.63 1.27L12 16z',
+  content_copy: 'M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z',
+  menu: 'M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z',
+  close: 'M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z',
 };
 
 const Icon = ({ name, className = '', size = '1em', style }) => {
@@ -34,7 +42,7 @@ const Icon = ({ name, className = '', size = '1em', style }) => {
       height={size}
       fill="currentColor"
       aria-hidden="true"
-      style={{ display: 'inline-block', verticalAlign: 'middle', ...style }}
+      style={{ display: 'inline-block', verticalAlign: 'middle', flexShrink: 0, ...style }}
     >
       <path d={path} />
     </svg>

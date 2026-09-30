@@ -1,170 +1,141 @@
-@import '../../styles/config';
+@use '../../styles/config' as *;
 
-.hire-me-pitch {
-  padding: $section-padding 0;
-  background-color: $surface-container-low;
-  overflow: hidden;
+.pitch {
+  @include section-y;
 
-  &__container {
-    max-width: $container-max;
-    margin: 0 auto;
-    padding-left: $margin-mobile;
-    padding-right: $margin-mobile;
-
-    @media (min-width: $bp-md) {
-      padding-left: $gutter;
-      padding-right: $gutter;
-    }
+  &__inner {
+    @include shell;
   }
 
   &__grid {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: $stack-lg;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.92fr);
+    gap: clamp(30px, 5vw, 64px);
     align-items: center;
 
-    @media (min-width: $bp-md) {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+    @include below($bp-lg) {
+      grid-template-columns: 1fr;
     }
   }
 
+  &__eyebrow {
+    @include eyebrow-line;
+    margin-bottom: 16px;
+  }
+
   &__title {
-    font-family: 'Inter', sans-serif;
-    font-size: 3rem;
-    font-weight: 600;
-    color: $on-surface;
-    margin-bottom: 2rem;
-
-    @media (max-width: $bp-sm) {
-    font-size: 32px;
-  }
-
-  @media (max-width: $bp-xs) {
-    font-size: 26px;
-  }
+    @include section-title;
+    max-width: 14ch;
   }
 
   &__list {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    padding: 0;
-    margin: 0;
     list-style: none;
+    display: grid;
+    gap: 22px;
+    margin-top: 36px;
   }
 
   &__item {
     display: flex;
+    gap: 16px;
     align-items: flex-start;
-    gap: 1rem;
   }
 
-  &__icon-badge {
-    margin-top: 0.25rem;
+  &__badge {
+    display: grid;
+    place-items: center;
     flex-shrink: 0;
-    width: 2rem;
-    height: 2rem;
-    border-radius: 9999px;
-    background-color: rgba($primary, 0.1);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 13px;
+    background: rgba(242, 179, 91, 0.12);
+    border: 1px solid rgba(242, 179, 91, 0.25);
+    color: var(--amber);
+    transition: transform 0.45s var(--ease-out);
   }
 
-  &__check {
-    color: $primary;
-    font-size: 0.875rem;
+  &__item:hover &__badge {
+    transform: translateY(-3px) rotate(-6deg);
   }
 
-  &__item-heading {
-    font-weight: 700;
-    color: $on-surface;
+  &__item-title {
+    font-size: 1.1rem;
+    letter-spacing: -0.02em;
   }
 
-  &__item-desc {
-    color: $secondary;
+  &__item-body {
+    margin-top: 6px;
+    font-size: 0.94rem;
+    color: var(--muted);
+    max-width: 46ch;
   }
 
-  &__testimonial-container {
-    position: relative;
-  }
+  // ---- quote --------------------------------------------------------
+  &__quote-card {
+    @include panel;
+    @include panel-spotlight;
+    padding: clamp(28px, 4vw, 42px);
+    border-radius: var(--r-lg);
 
-  &__card {
-    background-color: $surface-container-lowest;
-    padding: 3rem;
-    border-radius: 2.5rem;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    position: relative;
-    z-index: 10;
-
-     @media (max-width: $bp-sm) {
-    padding: 1.5rem;
-  }
-  }
-
-  &__quote-mark {
-    color: $primary-fixed-dim;
-    font-size: 3.75rem;
-    position: absolute;
-    top: -1rem;
-    left: -1rem;
-  }
-
-  &__quote {
-    font-family: 'Inter', sans-serif;
-    font-size: 28px;
-    color: $on-surface;
-    font-style: italic;
-    line-height: 1.2;
-
-    @media (max-width: $bp-sm) {
-    font-size: 20px;
-  }
-
-  @media (max-width: $bp-xs) {
-    font-size: 1rem;
-  }
-
-    &--highlight {
-      color: $primary;
+    &::after {
+      content: '';
+      position: absolute;
+      inset-inline: 0;
+      top: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--amber), transparent);
+      opacity: 0.6;
     }
   }
 
-  &__author-box {
-    margin-top: 2rem;
+  &__quote-mark {
+    color: var(--amber);
+    opacity: 0.32;
+    margin-bottom: 8px;
+  }
+
+  &__quote {
+    font-family: var(--font-display);
+    font-size: clamp(1.25rem, 2.3vw, 1.62rem);
+    font-weight: 600;
+    line-height: 1.32;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    text-wrap: balance;
+  }
+
+  &__author {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 14px;
+    margin-top: 28px;
+    padding-top: 22px;
+    border-top: 1px solid var(--line);
   }
 
   &__avatar {
-    width: 3rem;
-    height: 3rem;
-    border-radius: 9999px;
-    background-color: $primary-container;
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 0.9rem;
+    color: var(--ink-900);
+    background: linear-gradient(135deg, var(--amber), var(--foam));
   }
 
   &__author-name {
-    font-weight: 700;
-    color: $on-surface;
-    margin: 0;
+    display: block;
+    font-weight: 600;
+    color: var(--text);
+    font-size: 0.97rem;
   }
 
   &__author-role {
-    color: $secondary;
-    font-size: 0.875rem;
-    margin: 0;
-  }
-
-  &__blur-decor {
-    position: absolute;
-    bottom: -2.5rem;
-    right: -2.5rem;
-    width: 16rem;
-    height: 16rem;
-    background-color: rgba($primary, 0.05);
-    filter: blur(64px);
-    border-radius: 9999px;
+    display: block;
+    font-size: 0.85rem;
+    color: var(--muted);
   }
 }

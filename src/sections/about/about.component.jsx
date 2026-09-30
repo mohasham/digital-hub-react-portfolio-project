@@ -1,55 +1,92 @@
-import React from 'react';
-import './about.styles.scss';
+import Reveal from '../../components/reveal/reveal.component';
 import Icon from '../../components/icon/icon.component';
+import { useReveal, usePointerPanel } from '../../hooks/use-reveal';
+import './about.styles.scss';
+
+const CARDS = [
+  {
+    key: 'architecture',
+    icon: 'architecture',
+    title: 'Structure that survives the second feature',
+    body: 'Clean architecture, SOLID, and a clear separation of concerns — so adding to the codebase in month six costs about what it cost in week one.',
+    size: 'lead',
+  },
+  {
+    key: 'security',
+    icon: 'security',
+    title: 'Auth in layers',
+    body: 'JWT sessions, role-based access, and Row Level Security at the database — so a missed check in the UI is not the only thing standing between a user and someone else\u2019s data.',
+    size: 'tall',
+  },
+  {
+    key: 'ai',
+    icon: 'smart_toy',
+    title: 'AI that stays grounded',
+    body: 'Structured JSON output, validated server-side against real data before it reaches the user.',
+    size: 'small',
+  },
+  {
+    key: 'api',
+    icon: 'api',
+    title: 'APIs worth calling',
+    body: 'Predictable REST endpoints, validated inputs, honest error responses.',
+    size: 'small',
+  },
+  {
+    key: 'ui',
+    icon: 'devices',
+    title: 'Interfaces that hold up on a phone',
+    body: 'Mobile-first layouts in React and Next.js, tested on the small screen first rather than last.',
+    size: 'small-end',
+  },
+  {
+    key: 'delivery',
+    icon: 'deployed_code',
+    title: 'Shipped, not just written',
+    body: 'Branches, pull requests, code review, CI, deployment — the parts of the job that happen after the feature works on my machine.',
+    size: 'wide',
+  },
+];
+
+const BentoCard = ({ card, index }) => {
+  const ref = usePointerPanel();
+
+  return (
+    <Reveal
+      variant="scale"
+      delay={index * 70}
+      className={`build__cell build__cell--${card.size}`}
+    >
+      <article className="build__card" ref={ref}>
+        <span className="build__icon">
+          <Icon name={card.icon} size="20px" />
+        </span>
+        <h3 className="build__card-title">{card.title}</h3>
+        <p className="build__card-body">{card.body}</p>
+      </article>
+    </Reveal>
+  );
+};
 
 const About = () => {
+  const sectionRef = useReveal();
+
   return (
-    <section className="about-bento-section">
-      <div className="about-bento-section__container">
-        <div className="about-bento-section__grid">
+    <section className="build" ref={sectionRef}>
+      <div className="build__inner">
+        <header className="build__head">
+          <Reveal as="p" className="build__eyebrow">
+            How I work
+          </Reveal>
+          <Reveal as="h2" variant="mask" delay={60} className="build__title">
+            Six habits that show up in every project
+          </Reveal>
+        </header>
 
-          <div className="about-bento-section__card about-bento-section__card--featured">
-            <div className="about-bento-section__icon-wrapper">
-              <Icon name="architecture" className="material-symbols-outlined about-bento-section__icon" />
-            </div>
-            <h3 className="about-bento-section__card-title">Clean, Scalable Architecture</h3>
-            <p className="about-bento-section__card-text">Structuring full-stack applications with clean architecture, SOLID principles, and clear separation of concerns so they stay maintainable as they grow.</p>
-          </div>
-
-          <div className="about-bento-section__card about-bento-section__card--standard">
-            <Icon name="security" className="material-symbols-outlined about-bento-section__status-icon" />
-            <div>
-              <h3 className="about-bento-section__small-title">Auth & Security</h3>
-              <p className="about-bento-section__muted-text">Building JWT authentication, role-based access control, and layered authorization down to the database with Row Level Security.</p>
-            </div>
-          </div>
-
-          <div className="about-bento-section__card about-bento-section__card--surface">
-            <Icon name="smart_toy" className="material-symbols-outlined about-bento-section__status-icon" />
-            <h3 className="about-bento-section__small-title">AI Integration</h3>
-            <p className="about-bento-section__muted-text">Integrating LLMs and AI APIs to turn user data into personalized, structured, real-world features.</p>
-          </div>
-
-          <div className="about-bento-section__card about-bento-section__card--tertiary">
-            <Icon name="api" className="material-symbols-outlined about-bento-section__status-icon" />
-            <h3 className="about-bento-section__small-title">RESTful APIs</h3>
-            <p className="about-bento-section__text-opaque">Designing clean, validated, and documented REST endpoints for reliable client–server communication.</p>
-          </div>
-
-          <div className="about-bento-section__card about-bento-section__card--high">
-            <Icon name="devices" className="material-symbols-outlined about-bento-section__status-icon" />
-            <h3 className="about-bento-section__small-title">Responsive UIs</h3>
-            <p className="about-bento-section__muted-text">Crafting fluid, mobile-first interfaces with React, Next.js, and SCSS that adapt seamlessly across devices.</p>
-          </div>
-
-          <div className="about-bento-section__card about-bento-section__card--wide">
-            <div className="about-bento-section__icon-wrapper about-bento-section__icon-wrapper--accent">
-              <Icon name="deployed_code" className="material-symbols-outlined about-bento-section__icon" />
-            </div>
-            <h3 className="about-bento-section__card-title about-bento-section__card-title--dark">MVC & Backend Foundations</h3>
-            <p className="about-bento-section__muted-text">Comfortable with the MVC pattern and server-side fundamentals — from building an ASP.NET Core (.NET 6) app with the repository pattern, identity, and Stripe payments, to designing RESTful services in Node.js and Express.</p>
-          </div>
-
+        <div className="build__grid">
+          {CARDS.map((card, index) => (
+            <BentoCard card={card} index={index} key={card.key} />
+          ))}
         </div>
       </div>
     </section>

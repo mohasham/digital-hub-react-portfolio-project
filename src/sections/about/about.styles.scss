@@ -1,171 +1,136 @@
-@import '../../styles/config';
+@use '../../styles/config' as *;
 
-.about-bento-section {
-  padding: $section-padding 0;
-  background-color: $surface;
+.build {
+  @include section-y;
 
-  &__container {
-    max-width: $container-max;
-    margin: 0 auto;
-    padding-left: $margin-mobile;
-    padding-right: $margin-mobile;
+  &__inner {
+    @include shell;
+  }
 
-    @media (min-width: $bp-md) {
-      padding-left: $gutter;
-      padding-right: $gutter;
+  &__head {
+    max-width: 40ch;
+    margin-bottom: clamp(36px, 5vw, 56px);
+  }
+
+  &__eyebrow {
+    @include eyebrow-line;
+    margin-bottom: 16px;
+  }
+
+  &__title {
+    @include section-title;
+  }
+
+  // Deliberately uneven: the two ideas that matter most get the room.
+  // Six columns: two wide ideas, three mid, one full-width closer.
+  // Every row fills exactly, so the grid never leaves a hole.
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 20px;
+
+    @include below($bp-lg) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    @include below($bp-sm) {
+      grid-template-columns: 1fr;
     }
   }
 
-  &__grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
+  &__cell {
+    display: flex;
 
-    @media (min-width: $bp-md) {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+    &--lead,
+    &--tall {
+      grid-column: span 3;
+    }
+
+    &--small,
+    &--small-end {
+      grid-column: span 2;
+    }
+
+    &--wide {
+      grid-column: span 6;
+    }
+
+    @include below($bp-lg) {
+      &--lead,
+      &--tall,
+      &--small-end,
+      &--wide {
+        grid-column: span 2;
+      }
+      &--small {
+        grid-column: span 1;
+      }
+    }
+
+    @include below($bp-sm) {
+      &--lead,
+      &--tall,
+      &--small,
+      &--small-end,
+      &--wide {
+        grid-column: span 1;
+      }
     }
   }
 
   &__card {
-    border-radius: 1.875rem;
-    padding: 2.5rem;
+    @include panel;
+    @include panel-spotlight;
     display: flex;
     flex-direction: column;
-    @include transition-standard;
+    gap: 14px;
+    width: 100%;
+    padding: 28px 26px;
+    transition: transform 0.5s var(--ease-out), border-color 0.4s var(--ease-soft);
 
-    &--featured {
-      @media (min-width: $bp-md) {
-        grid-column: span 2 / span 2;
-      }
-      background-color: $primary-container;
-      color: $on-primary;
-      position: relative;
-      overflow: hidden;
-      justify-content: flex-end;
-
-      &:hover {
-        .about-bento-section__icon {
-          transform: scale(1.1);
-        }
-      }
-    }
-
-    &--standard {
-      background-color: $surface-container-highest;
-      justify-content: space-between;
-      border: 1px solid rgba($outline-variant, 0.2);
-    }
-
-    &--surface {
-      background-color: $surface-container;
-      border: 1px solid rgba($outline-variant, 0.2);
-    }
-
-&--tertiary {
-  background-color: $tertiary-container;
-  color: $on-tertiary-container;
-  border: 1px solid rgba($outline-variant, 0.2);
-
-  .about-bento-section__small-title,
-  .about-bento-section__status-icon {
-    color: $on-tertiary-container;
-  }
-}
-    &--high {
-      background-color: $surface-container-high;
-      border: 1px solid rgba($outline-variant, 0.2);
-    }
-
-    &--wide {
-      @media (min-width: $bp-md) {
-        grid-column: span 2 / span 2;
-      }
-      background-color: $surface-container-highest;
-      border: 1px solid rgba($outline-variant, 0.2);
-      position: relative;
-      overflow: hidden;
-      justify-content: flex-end;
-
-      &:hover {
-        .about-bento-section__icon {
-          transform: scale(1.1);
-        }
-      }
-    }
-  }
-
-  &__icon-wrapper {
-    position: absolute;
-    top: 0;
-    right: 0;
-    padding: 2rem;
-    opacity: 0.2;
-
-    &--accent {
-      opacity: 0.12;
-      color: $primary;
+    &:hover {
+      transform: translateY(-5px);
+      border-color: rgba(95, 224, 192, 0.3);
     }
   }
 
   &__icon {
-    font-size: 8rem;
-    font-variation-settings: 'FILL' 1;
-    transition: transform 0.5s ease;
+    display: grid;
+    place-items: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 13px;
+    background: rgba(95, 224, 192, 0.1);
+    border: 1px solid rgba(95, 224, 192, 0.22);
+    color: var(--foam);
+    transition: transform 0.5s var(--ease-out), background 0.4s;
   }
 
-  &__status-icon {
-    font-size: 2.25rem;
-    color: $primary;
-    margin-bottom: 2rem;
+  &__card:hover &__icon {
+    transform: translateY(-3px) rotate(6deg);
+    background: rgba(95, 224, 192, 0.16);
   }
 
   &__card-title {
-    font-family: 'Inter', sans-serif;
-    font-size: 2rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
-
-    @media (max-width: $bp-sm) {
-    font-size: 22px;
-  }
+    font-size: 1.14rem;
+    letter-spacing: -0.02em;
   }
 
-  &__card-title--dark {
-    color: $on-surface;
-    position: relative;
-    z-index: 1;
+  &__card-body {
+    font-size: 0.93rem;
+    color: var(--muted);
+    max-width: 48ch;
   }
 
-  &__card-text {
-    font-family: 'Inter', sans-serif;
-    font-size: 18px;
-    opacity: 0.9;
-    max-width: 28rem;
+  // The lead card gets the loudest type in the grid.
+  &__cell--lead &__card-title,
+  &__cell--tall &__card-title {
+    font-size: clamp(1.4rem, 2.4vw, 1.85rem);
+    max-width: 16ch;
   }
 
-  &__small-title {
-    font-family: 'Inter', sans-serif;
-    font-size: 2rem;
-    font-weight: 600;
-    color: $on-surface;
-    margin-bottom: 0.5rem;
-
-     @media (max-width: $bp-sm) {
-    font-size: 22px;
-  }
-  }
-
-  &__card--wide &__muted-text {
-    position: relative;
-    z-index: 1;
-    max-width: 34rem;
-  }
-
-  &__muted-text {
-    color: $secondary;
-  }
-
-  &__text-opaque {
-    opacity: 0.9;
+  &__cell--lead &__card-body,
+  &__cell--tall &__card-body {
+    font-size: 1rem;
   }
 }

@@ -1,49 +1,79 @@
-import React from 'react';
-import './project-card.styles.scss';
 import Icon from '../icon/icon.component';
+import {
+  BookingCover,
+  MealCover,
+  RoadmapCover,
+  CommerceCover,
+} from './project-covers';
+import { usePointerPanel } from '../../hooks/use-reveal';
+import './project-card.styles.scss';
 
-const ProjectCard = ({ imgUrl, imgAlt, dataAlt, tags, title, description, repoUrl }) => {
+const COVERS = {
+  booking: BookingCover,
+  meal: MealCover,
+  roadmap: RoadmapCover,
+  commerce: CommerceCover,
+};
+
+const ProjectCard = ({
+  cover,
+  year,
+  title,
+  summary,
+  highlights = [],
+  stack = [],
+  repoUrl,
+  liveUrl,
+}) => {
+  const Cover = COVERS[cover];
+  const panelRef = usePointerPanel({ tilt: true, strength: 6 });
+
   return (
-    <div className="project-card">
-      <div className="project-card__media-wrapper">
-        <img
-          className="project-card__img"
-          src={imgUrl}
-          alt={imgAlt}
-          data-alt={dataAlt}
-        />
-        <div className="project-card__overlay">
+    <article className="project" ref={panelRef}>
+      <div className="project__media">
+        {Cover && <Cover />}
+        <span className="project__year">{year}</span>
+      </div>
+
+      <div className="project__body">
+        <h3 className="project__title">{title}</h3>
+        <p className="project__summary">{summary}</p>
+
+        {highlights.length > 0 && (
+          <ul className="project__highlights">
+            {highlights.map((item) => (
+              <li className="project__highlight" key={item}>
+                <Icon name="check" size="15px" className="project__highlight-icon" />
+                {item}
+              </li>
+            ))}
+          </ul>
+        )}
+
+        <ul className="project__stack">
+          {stack.map((tech) => (
+            <li className="project__tech" key={tech}>
+              {tech}
+            </li>
+          ))}
+        </ul>
+
+        <div className="project__links">
+          {liveUrl && (
+            <a className="project__link project__link--primary" href={liveUrl} target="_blank" rel="noopener noreferrer">
+              Open live site
+              <Icon name="arrow_outward" size="16px" />
+            </a>
+          )}
           {repoUrl && (
-            <a
-              className="project-card__overlay-btn"
-              href={repoUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              View on GitHub
+            <a className="project__link" href={repoUrl} target="_blank" rel="noopener noreferrer">
+              <Icon name="code" size="16px" />
+              Read the code
             </a>
           )}
         </div>
       </div>
-      <div className="project-card__tags">
-        {tags.map((tag, index) => (
-          <span key={index} className="project-card__tag">{tag}</span>
-        ))}
-      </div>
-      <h3 className="project-card__title">{title}</h3>
-      <p className="project-card__description">{description}</p>
-      {repoUrl && (
-        <a
-          className="project-card__repo-link"
-          href={repoUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Icon name="code" className="material-symbols-outlined" />
-          View Code
-        </a>
-      )}
-    </div>
+    </article>
   );
 };
 

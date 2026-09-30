@@ -1,53 +1,99 @@
-@import '../../styles/config';
+@use '../../styles/config' as *;
+
 .button {
-  padding: 1rem 2rem;
-  border-radius: 0.75rem;
-  font-weight: 700;
-  text-decoration: none;
-  border: none;
+  --tx: 0px;
+  --ty: 0px;
+
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 0.95rem 1.7rem;
+  border: 1px solid transparent;
+  border-radius: var(--r-pill);
+  font-family: var(--font-body);
+  font-size: 0.97rem;
+  font-weight: 600;
+  letter-spacing: 0.005em;
   cursor: pointer;
-  display: inline-block;
-  text-align: center;
-  font-family: 'Inter', sans-serif;
-  font-size: 1rem;
-  @include transition-standard;
+  overflow: hidden;
+  isolation: isolate;
+  transform: translate3d(var(--tx), var(--ty), 0);
+  transition:
+    transform 0.35s var(--ease-out),
+    box-shadow 0.35s var(--ease-out),
+    border-color 0.3s var(--ease-soft),
+    color 0.3s var(--ease-soft);
 
-  @media (max-width: $bp-sm) {
-    padding: 0.75rem 1.25rem;
-    font-size: 14px;
+  &__label {
+    position: relative;
+    z-index: 2;
   }
 
-  &--primary {
-    background-color: $primary-container;
-    color: $on-primary;
-    box-shadow: 0 10px 15px -3px rgba($primary, 0.2);
-
-    &:hover {
-      transform: scale(1.05);
-    }
+  // Sweep that fills from the left on hover.
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    transform: scaleX(0);
+    transform-origin: 0 50%;
+    transition: transform 0.45s var(--ease-out);
   }
 
-  &--secondary {
-    border: 1px solid $outline-variant;
-    color: $on-surface;
-    background-color: transparent;
-
-    &:hover {
-      background-color: $surface-container-low;
-    }
+  &:hover::after,
+  &:focus-visible::after {
+    transform: scaleX(1);
   }
 
-  &--submit {
-    width: 100%;
-    background-color: $primary;
-    color: $on-primary;
+  &:active {
+    transform: translate3d(var(--tx), var(--ty), 0) scale(0.97);
+  }
+}
 
-    &:hover {
-      background-color: rgba($primary, 0.9);
-    }
+.button--primary {
+  background: var(--amber);
+  color: var(--ink-900);
+  box-shadow: 0 10px 30px -14px rgba(242, 179, 91, 0.85);
 
-    &:active {
-      transform: scale(0.95);
-    }
+  &::after {
+    background: linear-gradient(90deg, var(--foam), #9ef0da);
+  }
+
+  &:hover,
+  &:focus-visible {
+    box-shadow: 0 16px 38px -14px rgba(95, 224, 192, 0.7);
+  }
+}
+
+.button--secondary {
+  background: transparent;
+  border-color: var(--line-strong);
+  color: var(--text);
+
+  &::after {
+    background: rgba(242, 179, 91, 0.12);
+  }
+
+  &:hover,
+  &:focus-visible {
+    border-color: var(--amber);
+    color: var(--amber);
+  }
+}
+
+.button--ghost {
+  background: transparent;
+  color: var(--text-dim);
+  padding-inline: 1.1rem;
+
+  &::after {
+    background: rgba(215, 236, 255, 0.07);
+  }
+
+  &:hover,
+  &:focus-visible {
+    color: var(--text);
   }
 }
